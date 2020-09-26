@@ -11,14 +11,16 @@ public class RobotsControllerTest
         Assert.Equal("1 2 90", robot.getPosition());
     }
 
-    [Fact]
-    public void testMoveRobot()
+    [Theory]
+    [InlineData("1 1 E", "RFRFRFRF", "1 1 90")]
+    [InlineData("0 3 W", "LLFFF", "3 3 90")]
+    public void testMoveRobot(string position, string movements, string expected)
     {
         RobotsController controller = new RobotsController();
-        Robot robot = controller.initializeRobot("1 1 E");
+        Robot robot = controller.initializeRobot(position);
 
-        controller.moveRobot(robot, "RFRFRFRF");
+        controller.moveRobot(robot, movements);
 
-        Assert.Equal("1 1 90", robot.getPosition());
+        Assert.Equal(expected, robot.getPosition());
     }
 }
