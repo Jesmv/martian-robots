@@ -6,7 +6,7 @@ public class Robot {
     public string orientation;
     public float degrees;
 
-    public Robot(int x, int y, string orientation){
+    public Robot(float x, float y, string orientation){
         this.x = x;
         this.y = y;
         this.orientation = orientation;
@@ -35,28 +35,22 @@ public class Robot {
         }
     }
 
-    // public void rotate(string value){
-        
-    //     switch (this.orientation)
-    //     {
-    //         case "N":
-    //             if (value=="L") this.orientation = "W";
-    //             if (value=="R") this.orientation = "E";
-    //             break;
-    //         case "E":
-    //             if (value=="L") this.orientation = "N";
-    //             if (value=="R") this.orientation = "S";
-    //             break;
-    //         case "S":
-    //             if (value=="L") this.orientation = "E";
-    //             if (value=="R") this.orientation = "W";
-    //             break;
-    //         case "W":
-    //             if (value=="L") this.orientation = "S";
-    //             if (value=="R") this.orientation = "N";
-    //             break;
-    //     }
-    // }
+    public void moveForward() {
+        switch (this.orientation)
+        {   case "N":
+                this.y +=1;
+                break;
+            case "E":
+                this.x +=1;
+                break;
+            case "S":
+                this.y -=1;
+                break;
+            case "W":
+                this.x -=1;
+                break;
+        }
+    }
 
     public float cardinalToDegrees(string orientation) {
         if (orientation == "N") return 0;
