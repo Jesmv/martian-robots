@@ -19,9 +19,9 @@ namespace Robots.Tests
         [InlineData("R", "E")]
         public void RotateRobot(string value, string expect){
             Robot rob = new Robot(4, 2, "N");
-            string result = rob.rotate(value);
+            rob.rotate(value);
 
-            Assert.Equal(expect, result);
+            Assert.Equal(expect, rob.orientation);
         }
     }
 }
