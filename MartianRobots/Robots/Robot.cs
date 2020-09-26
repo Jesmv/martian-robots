@@ -26,6 +26,15 @@ public class Robot {
         }
     }
 
+    public void moveRight() {
+
+        if (this.degrees == 270 || this.degrees == 315) {
+            this.degrees -= 270;
+        } else {
+            this.degrees += 90;
+        }
+    }
+
     // public void rotate(string value){
         
     //     switch (this.orientation)

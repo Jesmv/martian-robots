@@ -61,5 +61,17 @@ namespace Robots.Tests
 
             Assert.Equal(rob.degrees, expect);
         }
+
+        [Theory]
+        [InlineData("N", 90)]
+        [InlineData("E", 180)]
+        [InlineData("S", 270)]
+        [InlineData("W", 0)]
+        public void moveRightRobot(string orientation, float expect) {
+            Robot rob = new Robot(8, 2, orientation);
+            rob.moveRight();
+
+            Assert.Equal(rob.degrees, expect);
+        }
     }
 }
