@@ -13,5 +13,15 @@ namespace Robots.Tests
 
             Assert.Matches(result, "4 2 W");
         }
+
+        [Theory]
+        [InlineData("L", "W")]
+        [InlineData("R", "E")]
+        public void RotateRobot(string value, string expect){
+            Robot rob = new Robot(4, 2, "N");
+            string result = rob.rotate(value);
+
+            Assert.Equal(expect, result);
+        }
     }
 }

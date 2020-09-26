@@ -14,4 +14,10 @@ public class Robot {
     public string printRobot(){
         return this.x + " " + this.y + " " + this.orientation;
     }
+
+    public string rotate(string value){
+        
+        
+        return "";
+    }
 }
