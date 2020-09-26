@@ -1,9 +1,11 @@
 using System;
+using System.Text;
 
 public class Robot {
     public float x;
     public float y;
     public float orientation;
+    public Boolean lost = false;
 
     public Robot(float x, float y, float orientation){
         this.x = x;
@@ -12,7 +14,11 @@ public class Robot {
     }
 
     public string getPosition(){
-        return this.x + " " + this.y + " " + this.orientation;
+        StringBuilder builder = new StringBuilder(); 
+        builder.Append(x).Append(" ").Append(y).Append(" ").Append(orientation);
+        if (lost) builder.Append(" ").Append("LOST");
+
+        return builder.ToString();
     }
 
     public void rotateLeft() {

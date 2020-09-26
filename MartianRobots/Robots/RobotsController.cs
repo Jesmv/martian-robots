@@ -1,12 +1,18 @@
 using System;
 
 public class RobotsController {
+    public Planet planet;
+
+    public RobotsController (Planet planet) {
+        this.planet = planet;
+    }
+
     public Robot initializeRobot(string position) {
 
         string[] parsedPositions = position.Split(" ");
         int x = int.Parse(parsedPositions[0]);
         int y = int.Parse(parsedPositions[1]);
-        float orientation = this.cardinalToDegrees(parsedPositions[2]);
+        float orientation = cardinalToDegrees(parsedPositions[2]);
        
         Robot robot = new Robot(x, y, orientation);
 
@@ -27,11 +33,13 @@ public class RobotsController {
                     break;
                 case 'F':
                     robot.moveForward();
+                    planet.checkLimits(robot);
                     break;
                 default:
                     throw new Exception("Invalid movement");
 
             }
+            if (robot.lost) break;
         }
     }
 
