@@ -10,7 +10,6 @@ public class Planet {
     }
 
     public string printPlanet(){
-        //Console.WriteLine(this.dx + " " + this.dy);
         return this.dx + " " + this.dy;
     }
 } 

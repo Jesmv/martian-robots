@@ -11,7 +11,7 @@ public class Robot {
         this.orientation = orientation;
     }
 
-    public void printRobot(){
-        Console.WriteLine(this.x + " " + this.y + " " + this.orientation);
+    public string printRobot(){
+        return this.x + " " + this.y + " " + this.orientation;
     }
 }
