@@ -17,28 +17,37 @@ public class Robot {
         return this.x + " " + this.y + " " + this.orientation;
     }
 
-    public void rotate(string value){
+    public void moveLeft() {
         
-        switch (this.orientation)
-        {
-            case "N":
-                if (value=="L") this.orientation = "W";
-                if (value=="R") this.orientation = "E";
-                break;
-            case "E":
-                if (value=="L") this.orientation = "N";
-                if (value=="R") this.orientation = "S";
-                break;
-            case "S":
-                if (value=="L") this.orientation = "E";
-                if (value=="R") this.orientation = "W";
-                break;
-            case "W":
-                if (value=="L") this.orientation = "S";
-                if (value=="R") this.orientation = "N";
-                break;
+        if (this.degrees == 0 || this.degrees == 45) {
+            this.degrees += 270;
+        } else {
+            this.degrees -= 90;
         }
     }
+
+    // public void rotate(string value){
+        
+    //     switch (this.orientation)
+    //     {
+    //         case "N":
+    //             if (value=="L") this.orientation = "W";
+    //             if (value=="R") this.orientation = "E";
+    //             break;
+    //         case "E":
+    //             if (value=="L") this.orientation = "N";
+    //             if (value=="R") this.orientation = "S";
+    //             break;
+    //         case "S":
+    //             if (value=="L") this.orientation = "E";
+    //             if (value=="R") this.orientation = "W";
+    //             break;
+    //         case "W":
+    //             if (value=="L") this.orientation = "S";
+    //             if (value=="R") this.orientation = "N";
+    //             break;
+    //     }
+    // }
 
     public float cardinalToDegrees(string orientation) {
         if (orientation == "N") return 0;

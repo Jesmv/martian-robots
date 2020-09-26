@@ -14,15 +14,15 @@ namespace Robots.Tests
             Assert.Matches(result, "4 2 W");
         }
 
-        [Theory]
-        [InlineData("L", "W")]
-        [InlineData("R", "E")]
-        public void RotateRobot(string value, string expect){
-            Robot rob = new Robot(4, 2, "N");
-            rob.rotate(value);
+        // [Theory]
+        // [InlineData("L", "W")]
+        // [InlineData("R", "E")]
+        // public void RotateRobot(string value, string expect){
+        //     Robot rob = new Robot(4, 2, "N");
+        //     rob.rotate(value);
 
-            Assert.Equal(expect, rob.orientation);
-        }
+        //     Assert.Equal(expect, rob.orientation);
+        // }
 
         [Theory]
         [InlineData("N", 0)]
@@ -48,6 +48,18 @@ namespace Robots.Tests
             string result = rob.degreesToCardinal(degrees);
 
             Assert.Equal(expect, result);
+        }
+
+        [Theory]
+        [InlineData("N", 270)]
+        [InlineData("E", 0)]
+        [InlineData("S", 90)]
+        [InlineData("W", 180)]
+        public void moveLeftRobot(string orientation, float expect) {
+            Robot rob = new Robot(8, 2, orientation);
+            rob.moveLeft();
+
+            Assert.Equal(rob.degrees, expect);
         }
     }
 }
