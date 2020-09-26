@@ -3,70 +3,51 @@ using System;
 public class Robot {
     public float x;
     public float y;
-    public string orientation;
-    public float degrees;
+    public float orientation;
 
-    public Robot(float x, float y, string orientation){
+    public Robot(float x, float y, float orientation){
         this.x = x;
         this.y = y;
         this.orientation = orientation;
-        this.degrees = cardinalToDegrees(orientation);
     }
 
-    public string printRobot(){
+    public string getPosition(){
         return this.x + " " + this.y + " " + this.orientation;
     }
 
     public void rotateLeft() {
         
-        if (this.degrees == 0 || this.degrees == 45) {
-            this.degrees += 270;
+        if (this.orientation < 90) {
+            this.orientation += 270;
         } else {
-            this.degrees -= 90;
+            this.orientation -= 90;
         }
     }
 
     public void rotateRight() {
 
-        if (this.degrees == 270 || this.degrees == 315) {
-            this.degrees -= 270;
+        if (this.orientation >= 270) {
+            this.orientation -= 270;
         } else {
-            this.degrees += 90;
+            this.orientation += 90;
         }
     }
 
     public void moveForward() {
         switch (this.orientation)
-        {   case "N":
+        {   case 0:
                 this.y +=1;
                 break;
-            case "E":
+            case 90:
                 this.x +=1;
                 break;
-            case "S":
+            case 180:
                 this.y -=1;
                 break;
-            case "W":
+            case 270:
                 this.x -=1;
                 break;
         }
     }
 
-    public float cardinalToDegrees(string orientation) {
-        if (orientation == "N") return 0;
-        if (orientation == "E") return 90;
-        if (orientation == "S") return 180;
-        if (orientation == "W") return 270;
-
-        return 360;
-    }
-
-    public string degreesToCardinal(float degrees) {
-        if (degrees == 0) return "N";
-        if (degrees == 90) return "E";
-        if (degrees == 180) return "S";
-        if (degrees == 270) return "W";
-
-        return string.Empty;
-    }
 }
