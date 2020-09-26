@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 public class Planet {
     public int dx;
     public int dy;
+
+    public List<(float, float)> scents = new List<(float, float)>();
 
     public Planet(int dx, int dy){
         this.dx = dx;
@@ -27,5 +30,14 @@ public class Planet {
             robot.y = 0;
             robot.lost = true;
         }
+
+        if(robot.lost) {
+            if (scents.Exists(x => x == (robot.x, robot.y))){
+                robot.lost = false;
+            } else {
+                scents.Add((robot.x, robot.y));
+            }
+        }
+        
     }
 } 

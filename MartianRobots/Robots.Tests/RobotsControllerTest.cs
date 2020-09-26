@@ -28,4 +28,19 @@ public class RobotsControllerTest
 
         Assert.Equal(expected, robot.getPosition());
     }
+
+    [Fact]
+    public void testScentProtection()
+    {
+        Planet planet = new Planet(5, 3);
+        RobotsController controller = new RobotsController(planet);
+        
+        Robot robot = controller.initializeRobot("3 2 N");
+        controller.moveRobot(robot, "FRRFLLFFRRFLL");
+
+        Robot robot2 = controller.initializeRobot("0 3 W");
+        controller.moveRobot(robot2, "LLFFFLFLFL");
+
+        Assert.Equal("2 3 180", robot2.getPosition());
+    }
 }
