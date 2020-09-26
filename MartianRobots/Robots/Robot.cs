@@ -17,7 +17,7 @@ public class Robot {
         return this.x + " " + this.y + " " + this.orientation;
     }
 
-    public void moveLeft() {
+    public void rotateLeft() {
         
         if (this.degrees == 0 || this.degrees == 45) {
             this.degrees += 270;
@@ -26,7 +26,7 @@ public class Robot {
         }
     }
 
-    public void moveRight() {
+    public void rotateRight() {
 
         if (this.degrees == 270 || this.degrees == 315) {
             this.degrees -= 270;

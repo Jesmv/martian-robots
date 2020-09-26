@@ -47,7 +47,7 @@ namespace Robots.Tests
         [InlineData("W", 180)]
         public void moveLeftRobot(string orientation, float expect) {
             Robot rob = new Robot(8, 2, orientation);
-            rob.moveLeft();
+            rob.rotateLeft();
 
             Assert.Equal( expect, rob.degrees);
         }
@@ -59,7 +59,7 @@ namespace Robots.Tests
         [InlineData("W", 0)]
         public void moveRightRobot(string orientation, float expect) {
             Robot rob = new Robot(8, 2, orientation);
-            rob.moveRight();
+            rob.rotateRight();
 
             Assert.Equal( expect, rob.degrees);
         }
