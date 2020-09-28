@@ -11,7 +11,7 @@ namespace Robots.Tests
             Robot rob = new Robot(4, 2, 270);
             string result = rob.getPosition();
 
-            Assert.Matches(result, "4 2 270");
+            Assert.Matches(result, "4 2 W");
         }
 
         [Theory]
@@ -39,10 +39,10 @@ namespace Robots.Tests
         }
 
         [Theory]
-        [InlineData(4, 3, 0, "4 4 0")]
-        [InlineData(4, 3, 90, "5 3 90")]
-        [InlineData(4, 3, 180, "4 2 180")]
-        [InlineData(4, 3, 270, "3 3 270")]
+        [InlineData(4, 3, 0, "4 4 N")]
+        [InlineData(4, 3, 90, "5 3 E")]
+        [InlineData(4, 3, 180, "4 2 S")]
+        [InlineData(4, 3, 270, "3 3 W")]
         public void moveForwardRobot(float x, float y, float orientation, string expect) {
             Robot rob = new Robot(x, y, orientation);
             rob.moveForward();

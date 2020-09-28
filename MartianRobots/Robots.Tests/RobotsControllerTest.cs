@@ -9,14 +9,14 @@ public class RobotsControllerTest
         RobotsController controller = new RobotsController(planet);
         Robot robot = controller.initializeRobot("1 2 E");
 
-        Assert.Equal("1 2 90", robot.getPosition());
+        Assert.Equal("1 2 E", robot.getPosition());
     }
 
     [Theory]
-    [InlineData("1 1 E", "RFRFRFRF", "1 1 90")]
-    [InlineData("0 3 W", "LLFFF", "3 3 90")]
-    [InlineData("3 2 N", "FRRFLLFFRRFLL", "3 3 0 LOST")]
-    [InlineData("3 2 N", "FRRFLLFFRFFFFFFFLL", "3 3 0 LOST")]
+    [InlineData("1 1 E", "RFRFRFRF", "1 1 E")]
+    [InlineData("0 3 W", "LLFFF", "3 3 E")]
+    [InlineData("3 2 N", "FRRFLLFFRRFLL", "3 3 N LOST")]
+    [InlineData("3 2 N", "FRRFLLFFRFFFFFFFLL", "3 3 N LOST")]
 
     public void testMoveRobot(string position, string movements, string expected)
     {
@@ -41,6 +41,6 @@ public class RobotsControllerTest
         Robot robot2 = controller.initializeRobot("0 3 W");
         controller.moveRobot(robot2, "LLFFFLFLFL");
 
-        Assert.Equal("2 3 180", robot2.getPosition());
+        Assert.Equal("2 3 S", robot2.getPosition());
     }
 }

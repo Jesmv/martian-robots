@@ -41,5 +41,6 @@ public class RobotsController {
             }
             if (robot.lost) break;
         }
+        
     } 
 }

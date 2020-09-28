@@ -15,7 +15,7 @@ public class Robot {
 
     public string getPosition(){
         StringBuilder builder = new StringBuilder(); 
-        builder.Append(x).Append(" ").Append(y).Append(" ").Append(orientation);
+        builder.Append(x).Append(" ").Append(y).Append(" ").Append(OrientationConverter.degreesToCardinal(orientation));
         if (lost) builder.Append(" ").Append("LOST");
 
         return builder.ToString();
