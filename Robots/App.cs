@@ -3,15 +3,13 @@ using System.IO;
 
 namespace Robots
 {
-    class Program
+    class App
     {
         static void Main(string[] args)
         {
-            string filename = args[0];
+            ValidateFileExists(args);
 
-            ValidateFileExists(filename);
-
-            InputData inputData = InputParser.Parse(filename);
+            InputData inputData = InputParser.Parse(args[0]);
 
             RobotsController controller = new RobotsController(inputData.planet);
 
@@ -23,7 +21,15 @@ namespace Robots
             }
         }
 
-        static void ValidateFileExists(string filename) {
+        static void ValidateFileExists(string[] args) {
+
+            if (args.Length == 0) {
+                Console.WriteLine("Specify an input file");
+                Environment.Exit(1);
+            }
+
+            string filename = args[0];
+
             if (!File.Exists(filename))
             {
                 Console.WriteLine("File does not exist");
