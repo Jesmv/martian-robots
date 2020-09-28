@@ -30,3 +30,4 @@ msbuild.wrn
 
 # VS Code
 .vcode/
+.vscode/settings.json
