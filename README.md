@@ -9,13 +9,14 @@ This is a solution for GuideSmith position. Exercise is done by Jessica Manso. I
 * Docker
 
 ## Run the exercise
-To build and run the program, change to directory: (dotnet restore para compilar todo en martianrobots)
+To build and run the program, first restore the project
 ```
-\MartianRobots\Robots
+cd Robots
+dotnet restore
 ```
-Execute the command:
+Execute the run command:
 ```
-dotnet run
+dotnet run --project Robots INPUT_FILE
 ```
 
 ## Run with docker
@@ -26,12 +27,7 @@ dotnet run
 
 I used XUnit test from .NET framework.
 
-To run the tests, change to directory:
-
-```
-\MartianRobots\Robots.Tests
-```
-Execute the command:
+To run the tests, execute the command:
 ```
 dotnet test
 ```
