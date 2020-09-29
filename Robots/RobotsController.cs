@@ -13,7 +13,7 @@ public class RobotsController {
         string[] parsedPositions = position.Split(" ");
         int x = int.Parse(parsedPositions[0]);
         int y = int.Parse(parsedPositions[1]);
-        float orientation = OrientationConverter.cardinalToDegrees(parsedPositions[2]);
+        float orientation = OrientationConverter.CardinalToDegrees(parsedPositions[2]);
        
         Robot robot = new Robot(x, y, orientation);
 

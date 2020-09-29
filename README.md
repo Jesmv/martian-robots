@@ -22,6 +22,19 @@ cd Robots
 dotnet run INPUT_FILE
 ```
 
+The input file should include the planet dimension in the first line, and the initial position and movements for each robot. 
+Like this:
+
+```
+5 3
+1 1 E
+RFRFRFRF
+3 2 N
+FRRFLLFFRRFLL
+0 3 W
+LLFFFLFLFL
+```
+
 ## Run with docker
 
 Build the docker image:

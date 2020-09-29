@@ -2,7 +2,7 @@ using System;
 
 public static class OrientationConverter
 {
-    public static float cardinalToDegrees(string orientation) {
+    public static float CardinalToDegrees(string orientation) {
         switch (orientation)
         {
             case "N":
@@ -18,7 +18,7 @@ public static class OrientationConverter
         }
     }
 
-    public static string degreesToCardinal(float orientation) {
+    public static string DegreesToCardinal(float orientation) {
         switch (orientation)
         {
             case 0:
