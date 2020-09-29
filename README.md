@@ -42,7 +42,3 @@ To run the tests, make sure you are in the `Robots.Test` folder, then execute th
 ```
 dotnet test
 ```
-
-## Development Comments
-
-...
