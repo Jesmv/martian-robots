@@ -15,9 +15,9 @@ namespace Robots
 
             foreach (RobotInstructions robotInstructions in inputData.instructions)
             {
-                Robot robot = controller.initializeRobot(robotInstructions.initialPosition);
-                controller.moveRobot(robot, robotInstructions.movements);
-                Console.WriteLine(robot.getPosition());
+                Robot robot = controller.InitializeRobot(robotInstructions.initialPosition);
+                controller.MoveRobot(robot, robotInstructions.movements);
+                Console.WriteLine(robot.GetPosition());
             }
         }
 

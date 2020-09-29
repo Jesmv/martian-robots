@@ -1,15 +1,16 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 public class RobotsControllerTest
 {
     [Fact]
-    public void testInitializeRobot()
+    public void TestInitializeRobot()
     {
         Planet planet = new Planet(5, 3);
         RobotsController controller = new RobotsController(planet);
-        Robot robot = controller.initializeRobot("1 2 E");
+        Robot robot = controller.InitializeRobot("1 2 E");
 
-        Assert.Equal("1 2 E", robot.getPosition());
+        Assert.Equal("1 2 E", robot.GetPosition());
     }
 
     [Theory]
@@ -18,29 +19,31 @@ public class RobotsControllerTest
     [InlineData("3 2 N", "FRRFLLFFRRFLL", "3 3 N LOST")]
     [InlineData("3 2 N", "FRRFLLFFRFFFFFFFLL", "3 3 N LOST")]
 
-    public void testMoveRobot(string position, string movements, string expected)
+    public void TestMoveRobot(string position, string movementsString, string expected)
     {
+        List<IMovement> movements = InputParser.parseMovementList(movementsString);
         Planet planet = new Planet(5, 3);
         RobotsController controller = new RobotsController(planet);
-        Robot robot = controller.initializeRobot(position);
+        Robot robot = controller.InitializeRobot(position);
 
-        controller.moveRobot(robot, movements);
+        controller.MoveRobot(robot, movements);
 
-        Assert.Equal(expected, robot.getPosition());
+        Assert.Equal(expected, robot.GetPosition());
     }
 
     [Fact]
-    public void testScentProtection()
+    public void TestScentProtection()
     {
         Planet planet = new Planet(5, 3);
         RobotsController controller = new RobotsController(planet);
         
-        Robot robot = controller.initializeRobot("3 2 N");
-        controller.moveRobot(robot, "FRRFLLFFRRFLL");
+        Robot robot = controller.InitializeRobot("3 2 N");
 
-        Robot robot2 = controller.initializeRobot("0 3 W");
-        controller.moveRobot(robot2, "LLFFFLFLFL");
+        controller.MoveRobot(robot, InputParser.parseMovementList("FRRFLLFFRRFLL"));
 
-        Assert.Equal("2 3 S", robot2.getPosition());
+        Robot robot2 = controller.InitializeRobot("0 3 W");
+        controller.MoveRobot(robot2, InputParser.parseMovementList("LLFFFLFLFL"));
+
+        Assert.Equal("2 3 S", robot2.GetPosition());
     }
 }

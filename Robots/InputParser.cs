@@ -1,34 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
-
-
-class InputData {
-
+public class InputData
+{
     public readonly Planet planet;
     public readonly List<RobotInstructions> instructions;
 
-    public InputData(Planet planet, List<RobotInstructions> instructions) {
+    public InputData(Planet planet, List<RobotInstructions> instructions)
+    {
         this.planet = planet;
         this.instructions = instructions;
     }
-
 }
 
-class RobotInstructions {
+public class RobotInstructions
+{
     public readonly string initialPosition;
-    public readonly string movements;
+    public readonly List<IMovement> movements;
 
-    public RobotInstructions(string initialPosition, string movements) {
+    public RobotInstructions(string initialPosition, List<IMovement> movements)
+    {
         this.initialPosition = initialPosition;
         this.movements = movements;
     }
 }
 
-class InputParser {
-
-    public static InputData Parse(string filename) {
+public class InputParser
+{
+    public static InputData Parse(string filename)
+    {
 
         Planet planet;
         List<RobotInstructions> instructions = new List<RobotInstructions>();
@@ -40,10 +40,11 @@ class InputParser {
             string linePlanet = read.ReadLine();
             string[] planetCoordinates = linePlanet.Split(" ");
 
-            int x = int.Parse(planetCoordinates[0]);
-            int y = int.Parse(planetCoordinates[1]);
-            
-            if (x <= 50 && y <= 50 && x > 0 && y > 0) {
+            float x = float.Parse(planetCoordinates[0]);
+            float y = float.Parse(planetCoordinates[1]);
+
+            if (x <= 50 && y <= 50 && x > 0 && y > 0)
+            {
                 planet = new Planet(x, y);
 
                 int count = 1;
@@ -51,19 +52,27 @@ class InputParser {
 
                 while ((line = read.ReadLine()) != null)
                 {
-                    if (count > 0 && count % 2!=0) {
+                    if (count > 0 && count % 2 != 0)
+                    {
                         startPosition = line;
-                    } else if (count > 0 && count % 2==0) {
+                    }
+                    else if (count > 0 && count % 2 == 0)
+                    {
                         if (line.Length <= 100)
                         {
-                            instructions.Add(new RobotInstructions(startPosition, line));
-                        } else {
+                            List<IMovement> movementList = parseMovementList(line);
+                            instructions.Add(new RobotInstructions(startPosition, movementList));
+                        }
+                        else
+                        {
                             throw new Exception("Invalid instruction, will be less than 100 movements.");
                         }
                     }
-                    count ++;
+                    count++;
                 }
-            } else {
+            }
+            else
+            {
                 throw new Exception("Invalid Planet, maximum value per coordinate is 50.");
             }
 
@@ -71,4 +80,34 @@ class InputParser {
         }
     }
 
+    public static List<IMovement> parseMovementList(string line)
+    {
+        List<IMovement> movementList = new List<IMovement>();
+        foreach (var item in line)
+        {
+            IMovement movement;
+
+            switch (item)
+            {
+                case 'L':
+                    movement = new RotateLeft();
+                    break;
+                case 'R':
+                    movement = new RotateRight();
+                    break;
+                case 'F':
+                    movement = new MoveForward();
+                    break;
+                case ' ':
+                    continue;
+                default:
+                    throw new Exception("Invalid movement");
+
+            }
+
+            movementList.Add(movement);
+        }
+
+        return movementList;
+    }
 }

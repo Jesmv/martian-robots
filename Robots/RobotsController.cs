@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public class RobotsController {
     public Planet planet;
@@ -7,7 +8,7 @@ public class RobotsController {
         this.planet = planet;
     }
 
-    public Robot initializeRobot(string position) {
+    public Robot InitializeRobot(string position) {
 
         string[] parsedPositions = position.Split(" ");
         int x = int.Parse(parsedPositions[0]);
@@ -19,28 +20,14 @@ public class RobotsController {
         return robot;
     }
 
-    public void moveRobot(Robot robot, string movements)
+    public void MoveRobot(Robot robot, List<IMovement> movements)
     {
-        foreach (char movement in movements)
+        foreach (var movement in movements)
         {
-            switch (movement)
-            {
-                case 'L':
-                    robot.rotateLeft();
-                    break;
-                case 'R':
-                    robot.rotateRight();
-                    break;
-                case 'F':
-                    robot.moveForward();
-                    planet.checkLimits(robot);
-                    break;
-                default:
-                    throw new Exception("Invalid movement");
+            movement.Move(robot);
+            planet.CheckLimits(robot);
 
-            }
             if (robot.lost) break;
         }
-        
     } 
 }

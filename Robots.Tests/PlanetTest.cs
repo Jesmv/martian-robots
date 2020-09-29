@@ -12,7 +12,7 @@ using Xunit;
         public void Planet(int x, int y)
         {
             Planet marte = new Planet(x,y);
-            string result = marte.printPlanet();
+            string result = marte.PrintPlanet();
 
             Assert.Matches(result, (x + " " + y));
         }

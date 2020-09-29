@@ -1,27 +1,27 @@
 using System;
 using System.Collections.Generic;
 
-public class Planet {
-    public int dx;
-    public int dy;
-
+public class Planet 
+{
+    public float x;
+    public float y;
     public List<(float, float)> scents = new List<(float, float)>();
 
-    public Planet(int dx, int dy){
-        this.dx = dx;
-        this.dy = dy;
+    public Planet(float x, float y){
+        this.x = x;
+        this.y = y;
     }
 
-    public string printPlanet(){
-        return this.dx + " " + this.dy;
+    public string PrintPlanet(){
+        return this.x + " " + this.y;
     }
 
-    public void checkLimits(Robot robot){
-        if (dx < robot.x){
-            robot.x = dx;
+    public void CheckLimits(Robot robot){
+        if (x < robot.x){
+            robot.x =x;
             robot.lost = true;
-        } else if(dy < robot.y){
-            robot.y = dy;
+        } else if(y < robot.y){
+            robot.y = y;
             robot.lost = true;
         } else if (robot.x < 0) {
             robot.x = 0;
