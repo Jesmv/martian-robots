@@ -1,22 +1,25 @@
 # Martian Robots
 
-This is a solution for GuideSmith position. Exercise is done by Jessica Manso. It is written in C# using **.Net core** and simulate the movementof a Martian Robot.
+This is a solution for GuideSmith position. Exercise is done by Jessica Manso. 
+It is written in C# using **.Net core** and simulate the movement of a Martian Robot.
 
 ## Prerequisites
 
 * .Net Core SDK 3.1
-* C# extension for Visual Studio Code
 * Docker
 
-## Run the exercise
-To build and run the program, first restore the project
+## Restore the solution 
+
 ```
-cd Robots
 dotnet restore
 ```
-Execute the run command:
+
+## Run the exercise
+To build and run the program, go to the Robots folder and run the project:
+
 ```
-dotnet run --project Robots INPUT_FILE
+cd Robots
+dotnet run INPUT_FILE
 ```
 
 ## Run with docker
@@ -33,12 +36,11 @@ Run the container:
 docker run -ti --rm -v YOUR_DATA_FOLDER:/data martian_robots /data/robots.txt
 ```
 
-
 ## Run tests
 
 I used XUnit test from .NET framework.
 
-To run the tests, make sure you are in the `Robots.Test` folder, then execute the command:
+To run the tests, make sure you are in the `Robots.Tests` folder, then execute the command:
 ```
 dotnet test
 ```
