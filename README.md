@@ -1,6 +1,6 @@
 # Martian Robots
 
-This is a solution for GuideSmith position. Exercise is done by Jessica Manso. 
+This is a solution for The Martian Robots problem. 
 It is written in C# using **.Net core** and simulate the movement of a Martian Robot.
 
 ## Prerequisites
